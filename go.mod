@@ -1,6 +1,6 @@
 module github.com/flanksource/apm-hub
 
-go 1.25
+go 1.25.0
 
 require (
 	github.com/aws/aws-sdk-go-v2/config v1.19.1

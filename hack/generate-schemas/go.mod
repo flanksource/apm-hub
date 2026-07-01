@@ -1,6 +1,6 @@
 module github.com/flanksource/config-db/hack/generate-schemas
 
-go 1.25
+go 1.25.0
 
 require (
 	github.com/alecthomas/jsonschema v0.0.0-20220216202328-9eeeec9d044b
