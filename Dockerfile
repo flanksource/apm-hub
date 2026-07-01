@@ -1,4 +1,4 @@
-FROM golang:1.20@sha256:bc5f0b5e43282627279fe5262ae275fecb3d2eae3b33977a7fd200c7a760d6f1 as builder
+FROM golang:1.26.1-bookworm@sha256:ab3d6955bbc813a0f3fdf220c1d817dd89c0b3f283777db8ece4a32fe7858edd AS builder
 WORKDIR /app
 ARG VERSION
 COPY go.mod /app/go.mod
@@ -20,5 +20,5 @@ RUN apt-get update && \
   apt-get clean
 
 COPY --from=builder /app/.bin/apm-hub /app
-ENV ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.20
+ENV ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.26
 ENTRYPOINT ["/app/apm-hub"]
