@@ -265,7 +265,7 @@ func (q SearchParams) String() string {
 	if q.Query != "" {
 		s += fmt.Sprintf("query=%s ", q.Query)
 	}
-	if q.Labels != nil && len(q.Labels) > 0 {
+	if len(q.Labels) > 0 {
 		s += fmt.Sprintf("labels=%v ", q.Labels)
 	}
 	if q.End != "" {

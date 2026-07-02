@@ -31,7 +31,7 @@ func podNames(list *v1.PodList) []string {
 }
 
 func (t *KubernetesSearch) MatchRoute(q *logs.SearchParams) (match bool, isAdditive bool) {
-	return t.config.CommonBackend.Routes.MatchRoute(q)
+	return t.config.Routes.MatchRoute(q)
 }
 
 func (s *KubernetesSearch) Search(q *logs.SearchParams) (r logs.SearchResults, err error) {
@@ -67,7 +67,7 @@ func (s *KubernetesSearch) Search(q *logs.SearchParams) (r logs.SearchResults, e
 		return r, nil
 	}
 	logger.Tracef("[%s] searching in pods %s ", q, podNames(pods))
-	r.Results = s.getLogResultsForPods(q, pods, collections.MergeMap(s.config.CommonBackend.Labels, resultLabels))
+	r.Results = s.getLogResultsForPods(q, pods, collections.MergeMap(s.config.Labels, resultLabels))
 	r.Total = len(r.Results)
 	return r, nil
 }

@@ -44,7 +44,7 @@ func NewElasticSearchBackend(client *elasticsearch.Client, config *logs.ElasticS
 }
 
 func (t *ElasticSearchBackend) MatchRoute(q *logs.SearchParams) (match bool, isAdditive bool) {
-	return t.config.CommonBackend.Routes.MatchRoute(q)
+	return t.config.Routes.MatchRoute(q)
 }
 
 func (t *ElasticSearchBackend) Search(q *logs.SearchParams) (logs.SearchResults, error) {
@@ -65,7 +65,9 @@ func (t *ElasticSearchBackend) Search(q *logs.SearchParams) (logs.SearchResults,
 	if err != nil {
 		return result, fmt.Errorf("error searching: %w", err)
 	}
-	defer res.Body.Close()
+	defer func() {
+		_ = res.Body.Close()
+	}()
 
 	var r pkgElasticsearch.SearchResponse
 	if err := json.NewDecoder(res.Body).Decode(&r); err != nil {
