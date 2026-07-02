@@ -45,7 +45,7 @@ func NewOpenSearchBackend(client *opensearch.Client, config *logs.OpenSearchBack
 }
 
 func (t *OpenSearchBackend) MatchRoute(q *logs.SearchParams) (match bool, isAdditive bool) {
-	return t.config.CommonBackend.Routes.MatchRoute(q)
+	return t.config.Routes.MatchRoute(q)
 }
 
 func (t *OpenSearchBackend) Search(q *logs.SearchParams) (logs.SearchResults, error) {
@@ -67,7 +67,9 @@ func (t *OpenSearchBackend) Search(q *logs.SearchParams) (logs.SearchResults, er
 	if err != nil {
 		return result, fmt.Errorf("error searching: %w", err)
 	}
-	defer res.Body.Close()
+	defer func() {
+		_ = res.Body.Close()
+	}()
 
 	var r elasticsearch.SearchResponse
 	if err := json.NewDecoder(res.Body).Decode(&r); err != nil {

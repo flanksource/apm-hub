@@ -3,8 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.10.0
-  creationTimestamp: null
+    controller-gen.kubebuilder.io/version: v0.20.0
   name: loggingbackends.apm-hub.flanksource.com
 spec:
   group: apm-hub.flanksource.com
@@ -21,14 +20,19 @@ spec:
         description: LoggingBackend is the Schema for the loggingbackend API
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -112,9 +116,9 @@ spec:
                         labels:
                           additionalProperties:
                             type: string
-                          description: Labels are custom labels specified in the configuration
-                            file for a backend that will be attached to each log line
-                            returned by that backend.
+                          description: |-
+                            Labels are custom labels specified in the configuration file for a backend
+                            that will be attached to each log line returned by that backend.
                           type: object
                         log_group:
                           type: string
@@ -207,9 +211,9 @@ spec:
                               type: object
                           type: object
                         fields:
-                          description: ElasticSearchFields defines the fields to use
-                            for the timestamp and message and excluding certain fields
-                            from the message
+                          description: |-
+                            ElasticSearchFields defines the fields to use for the timestamp and message
+                            and excluding certain fields from the message
                           properties:
                             exclusions:
                               items:
@@ -225,9 +229,9 @@ spec:
                         labels:
                           additionalProperties:
                             type: string
-                          description: Labels are custom labels specified in the configuration
-                            file for a backend that will be attached to each log line
-                            returned by that backend.
+                          description: |-
+                            Labels are custom labels specified in the configuration file for a backend
+                            that will be attached to each log line returned by that backend.
                           type: object
                         namespace:
                           type: string
@@ -318,9 +322,9 @@ spec:
                         labels:
                           additionalProperties:
                             type: string
-                          description: Labels are custom labels specified in the configuration
-                            file for a backend that will be attached to each log line
-                            returned by that backend.
+                          description: |-
+                            Labels are custom labels specified in the configuration file for a backend
+                            that will be attached to each log line returned by that backend.
                           type: object
                         path:
                           items:
@@ -381,9 +385,9 @@ spec:
                         labels:
                           additionalProperties:
                             type: string
-                          description: Labels are custom labels specified in the configuration
-                            file for a backend that will be attached to each log line
-                            returned by that backend.
+                          description: |-
+                            Labels are custom labels specified in the configuration file for a backend
+                            that will be attached to each log line returned by that backend.
                           type: object
                         namespace:
                           description: namespace to search the kommons.EnvVar in
@@ -409,9 +413,9 @@ spec:
                         address:
                           type: string
                         fields:
-                          description: ElasticSearchFields defines the fields to use
-                            for the timestamp and message and excluding certain fields
-                            from the message
+                          description: |-
+                            ElasticSearchFields defines the fields to use for the timestamp and message
+                            and excluding certain fields from the message
                           properties:
                             exclusions:
                               items:
@@ -427,9 +431,9 @@ spec:
                         labels:
                           additionalProperties:
                             type: string
-                          description: Labels are custom labels specified in the configuration
-                            file for a backend that will be attached to each log line
-                            returned by that backend.
+                          description: |-
+                            Labels are custom labels specified in the configuration file for a backend
+                            that will be attached to each log line returned by that backend.
                           type: object
                         namespace:
                           type: string

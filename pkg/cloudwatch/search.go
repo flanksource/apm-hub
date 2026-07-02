@@ -23,7 +23,7 @@ type cloudWatchSearch struct {
 }
 
 func (t *cloudWatchSearch) MatchRoute(q *logs.SearchParams) (match bool, isAdditive bool) {
-	return t.config.CommonBackend.Routes.MatchRoute(q)
+	return t.config.Routes.MatchRoute(q)
 }
 
 func (t *cloudWatchSearch) Search(q *logs.SearchParams) (logs.SearchResults, error) {

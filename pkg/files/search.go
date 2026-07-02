@@ -33,7 +33,7 @@ func (t *FileSearch) Search(q *logs.SearchParams) (r logs.SearchResults, err err
 }
 
 func (t *FileSearch) MatchRoute(q *logs.SearchParams) (match bool, isAdditive bool) {
-	return t.config.CommonBackend.Routes.MatchRoute(q)
+	return t.config.Routes.MatchRoute(q)
 }
 
 type logsPerFile map[string][]logs.Result
