@@ -85,7 +85,7 @@ jobs:
           git fetch --prune --unshallow
           echo "RELEASE_VERSION=$(git describe --abbrev=0 --tags | sed -e 's/^v//')" >> $GITHUB_ENV
       - name: Update image tags
-        uses: mikefarah/yq@a198f72367ce9da70b564a2cc25399de8e27bf37 # master
+        uses: mikefarah/yq@c35ec752e38ea0c096d3c44e13cfc0797ac394d8 # master
         with:
           cmd: |
             yq -i e '.version = "${{ env.RELEASE_VERSION }}"' chart/Chart.yaml
